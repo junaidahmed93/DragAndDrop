@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+<link rel="stylesheet" href="css/app.css">
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+
+<script src="bower_components/angular-sortable-view/src/angular-sortable-view.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+
+<script src="JS/app.js"></script>
+
+<body ng-app="myApp" ng-controller="appController" class="disable-text-selection">
+
+<div ng-repeat="items in data" >{{items}} <br></div>
+
+
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button aria-label="Go Back">
+                Go Back
+            </md-button>
+            <h2>
+          <span>PanaCloud</span>
+        </h2>
+            <span flex></span>
+            <md-button class="md-raised" aria-label="Add Task" ng-click="AddTaskWalaButton(add)">
+                ADD TASK
+            </md-button> <span> <input type="text" ng-model="add"> </span>
+            <md-button class="md-fab md-mini" aria-label="Favorite">
+                <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <div sv-root class="multi-sortable">
+
+        <div layout="colum" class="inner-left-menu">
+
+        </div>
+        <!--<div layout="row" class="" sub-main">-->
+                <!--<h1>hello</h1>-->
+        <!--</div>-->
+
+        <div layout="colum" class="Todo">
+            <div class="sortable-container" sv-part="data.Todo">
+                <md-toolbar class="md-theme-light">
+                    <div class="md-toolbar-tools Todo Todo-color">
+                        <h2>
+                        ToDo
+                    </h2>
+
+                    </div>
+                </md-toolbar>
+
+                <md-card ng-repeat="item in data.Todo track by $index" sv-element class="well multi">
+                    <md-card-title>
+                        {{item}}
+                    </md-card-title>
+
+                    
+                </md-card>
+
+
+
+            </div>
+        </div>
+
+        <div layout="colum" class="Doing">
+            <div class="sortable-container" sv-part="data.Doing">
+                <md-toolbar class="md-theme-light">
+                    <div class="md-toolbar-tools Doing Doing-color">
+                        <h2>
+                        Doing
+                    </h2>
+
+                    </div>
+                </md-toolbar>
+                <md-card ng-repeat="item in data.Doing track by $index" sv-element class="well multi">
+
+                    <md-card-title>
+                        {{item}}
+                    </md-card-title>
+
+                   
+                </md-card>
+
+            </div>
+        </div>
+
+        <div layout="colum" class="Review">
+            <div class="sortable-container" sv-part="data.Review">
+
+                <md-toolbar class="md-theme-light">
+                    <div class="md-toolbar-tools Review Review-color">
+                        <h2>
+                        Review
+                    </h2>
+
+                    </div>
+                </md-toolbar>
+
+                <md-card ng-repeat="item in data.Review track by $index" sv-element class="well multi">
+                    <md-card-title>
+                        {{item}}
+                    </md-card-title>
+
+                    
+                </md-card>
+
+            </div>
+        </div>
+
+        <div layout="colum" class="Done">
+            <div class="sortable-container" sv-part="data.Done">
+
+                <md-toolbar class="md-theme-light">
+                    <div class="md-toolbar-tools Done Done-color">
+                        <h2>
+                        Doing <span>{{item.length}}</span>
+                    </h2>
+
+                    </div>
+                </md-toolbar>
+                <md-card ng-repeat="item in data.Done track by $index" sv-element class="well multi">
+                    <md-card-title>
+                        {{item}}
+                    </md-card-title>
+
+                    
+                </md-card>
+
+            </div>
+        </div>
+    </div>
+    <!--ng-repeat="(key , value) in project"-->
+
+    <!--<md-content sv-root class="md-padding" layout-xs="column" layout="row">
+
+    <div sv-part="value"  flex-xs flex-gt-xs="25" layout="column">  
+        <md-card>
+
+            <md-toolbar class="md-theme-light">
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <span ng-bind="key"></span>
+                    </h2>                  
+                    
+                </div>
+            </md-toolbar>
+
+            <md-card ng-repeat="item in project.Todo" sv-element>
+                <md-card-title>
+                    {{item}}
+                </md-card-title>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <button class="md-button md-primary" ng-click="">Delete</button>
+                </md-card-actions>
+            </md-card>
+
+           
+
+        </md-card>
+
+
+    </div>
+    
+    <div sv-part="value"  flex-xs flex-gt-xs="25" layout="column">  
+        <md-card>
+
+            <md-toolbar class="md-theme-light">
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <span ng-bind="key"></span>
+                    </h2>                  
+                    
+                </div>
+            </md-toolbar>
+
+            <md-card ng-repeat="item in project.Doing" sv-element>
+                <md-card-title>
+                    {{item}}
+                </md-card-title>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <button class="md-button md-primary" ng-click="">Delete</button>
+                </md-card-actions>
+            </md-card>
+
+           
+
+        </md-card>
+
+
+    </div>
+</md-content>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+body{
+    background-color: lightgray;
+}
+
+.disable-text-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.md-toolbar-tools{
+    
+    background-color: #32B4CA;
+}
+
+.Todo , .Doing, .Review, .Done, .inner-left-menu{
+    float: left;
+    /*height: 500px;*/
+    width: 317px;
+    border: 1px solid gray;
+}
+.inner-left-menu{
+    width: 80px
+    
+}
+
+.Todo-color{
+    background-color: #C851DB;
+}
+
+.Doing-color{
+    background-color: rgb(85, 161, 212);
+}
+
+.Review-color{
+   background-color: rgb(80, 199, 141);
+}
+
+.Done-color{
+    background-color: rgb(226, 111, 90);
+}
